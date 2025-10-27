@@ -3,7 +3,6 @@
 library(dplyr)
 
 
-
 #Vamos a generar el mazo. Sabemos que hay 52 cartas en total, con 4 palos diferentes: Corazón, Diamante, Pica y Treból.
 #Cada carta va desde el númwro 1 al 10, y luego están las cartas nombradas J, Q y K. Vamos a enumerar cada carta del 1 al 52. 
 
@@ -17,13 +16,15 @@ obtener.valor <- function(carta){
 #Por ejemplo, si queremos saber el valor de la carta enumerada como 14 (que es la As de Diamante) obtendríamos 1. 
 obtener.valor(14)
 
-#Para obtener el palo tenemos el siguiente método: 
+#Pra obtner el palo de la carta, tenemos el siguiente código:
+
 obtener.palo <- function(carta){
-  palo = ""
-  case_when
-  if(carta > 0 & carta < 14){
-    return("corazones")
-  }else if (carta > 13 & carta < 27){
-    return()
-  }
+  palo = case_when(
+    carta > 0 & carta < 14 ~ "corazones", 
+    carta > 13 & carta < 27 ~ "diamantes", 
+    carta > 26 & carta < 40 ~ "picas", 
+    carta > 29 & carta < 53 ~"tréboles"
+  )
+  palo
 }
+obtener.palo(14)
