@@ -50,5 +50,6 @@ head(data)
   
 head(df.final, 20)
   
+  write_csv(df.final, "gatos_petfinder_ny_final")
   
   
