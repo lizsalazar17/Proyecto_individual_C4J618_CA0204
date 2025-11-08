@@ -3,13 +3,12 @@
 #Esta función tomará los geneotipos del padre y la madre, y la cantidad de crías que tendrán. 
 cruce.gen.O <- function(padre.genotipo, madre.genotipo, n.gatitos){
   #Para filtrar los alelos del padre
-  alelo.padre = gsub("x\\^", "", padre.genotipo |> gsub("y", "", x = _))
+  alelo.padre = if (grepl("x\\^O", padre.genotipo)) "O" else "o"
   
-  alelos.madre = strsplit(gsub("x\\^", "", madre.genotipo), "x")[[1]]
+  madre.sin.prefijo = sub("^x\\^", "", madre.genotipo)
   
-  #Para limpiar si no queda algún "" de más 
+  alelos.madre = strsplit(madre.sin.prefijo, "x\\^")[[1]]
   
-  alelos.madre = alelos.madre[alelos.madre != ""]
   
   descendencia = character(n.gatitos)
   
