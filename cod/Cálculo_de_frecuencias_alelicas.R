@@ -3,6 +3,7 @@
 #Cargamos librerías
 
 library(tidyverse)
+library(ggplot2)
 
 # Iniciamos nuestra base de datos final
 df <- df.final
@@ -127,6 +128,20 @@ tibble(
 )
 
 
+#Ahora, veamos estos resultados en un gráfico
+
+df.final %>%
+  count(Genotipo_O) %>%
+  ggplot(aes(x = Genotipo_O, y = n, fill = Genotipo_O)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = n), vjust = -0.4) +
+  labs(
+    title = "Frecuencia de genotipos del gen O (color naranja)",
+    x = "Genotipo",
+    y = "Frecuencia observada"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
 
 
 
