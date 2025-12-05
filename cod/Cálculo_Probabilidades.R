@@ -89,7 +89,7 @@ simulacion.empirica <- function(df, n.parejas, n.crias){
   # por si la base tiene menos de lo que pedimos
   n.parejas.real = min(length(machos.reales), length(hembras.reales), n.parejas)
   
-  # tomar al azar
+  
   padres <- sample(machos.reales, n.parejas.real, replace = TRUE)
   madres <- sample(hembras.reales, n.parejas.real, replace = TRUE)
   
@@ -125,5 +125,26 @@ ggplot(resultados.empiricas, aes(x = Genotipo, y = Proporcion, fill = Genotipo))
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 45, hjust = 1))
 
-#Comparemos los resultados teeóricos con los resultados empiricos 
+#Comparemos los resultados teóricos con los empiricos 
+
+resultados.comparados <- bind_rows(
+  resultados.teorico |> mutate(Tipo = "Teórico"),
+  resultados.empiricas |> mutate(Tipo = "Empírico")
+)
+
+ggplot(resultados.comparados, aes(x = Genotipo, y = Proporcion, fill = Tipo)) +
+  geom_col(position = "dodge") +
+  geom_text(
+    aes(label = paste0(round(Proporcion * 100, 1), "%")),
+    position = position_dodge(width = 0.9),
+    vjust = -0.3,
+    size = 3
+  ) +
+  labs(
+    title = "Comparación entre simulación teórica y empírica del gen O",
+    x = "Genotipo",
+    y = "Proporción"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
