@@ -117,8 +117,8 @@ chi.hembras
 p.val.h <- 1 - pchisq(chi.hembras, 2) 
 p.val.h
 
-#Veamos los resultados de maner más ordenada
-tibble(
+#Veamos los resultados de manera más ordenada
+resultados.equilibrio <- tibble(
   Categoria = c("X^OY", "X^oY", "X^OX^O", "X^OX^o", "X^oX^o"),
   Observado = c(total.machos.O, total.machos.o,
                 total.hembras.O.O, total.hembras.O.o, total.hembras.o.o),
@@ -127,21 +127,27 @@ tibble(
   Diferencia = Observado - Esperado
 )
 
+resultados.equilibrio
 
-#Ahora, veamos estos resultados en un gráfico
 
-df.final %>%
-  count(Genotipo_O) %>%
-  ggplot(aes(x = Genotipo_O, y = n, fill = Genotipo_O)) +
-  geom_bar(stat = "identity") +
-  geom_text(aes(label = n), vjust = -0.4) +
+resultados.long <- resultados.equilibrio |>
+  pivot_longer(
+    cols = c(Observado, Esperado),
+    names_to = "Tipo",
+    values_to = "Frecuencia"
+  )
+
+ggplot(resultados.long, aes(x = Categoria, y = Frecuencia, fill = Tipo)) +
+  geom_col(position = "dodge") +
+  geom_text(aes(label = round(Frecuencia, 1)),
+            position = position_dodge(width = 0.9),
+            vjust = -0.3, size = 3) +
   labs(
-    title = "Frecuencia de genotipos del gen O (color naranja)",
+    title = "Genotipos observados vs esperados bajo Hardy–Weinberg",
     x = "Genotipo",
-    y = "Frecuencia observada"
+    y = "Frecuencia"
   ) +
-  theme_minimal() +
-  theme(legend.position = "none")
+  theme_minimal()
 
 
 
