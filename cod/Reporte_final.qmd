@@ -13,7 +13,6 @@ format:
     margin-right: "2.54cm"
     margin-top: "2.54cm"
     margin-bottom: "2.54cm"
-    include-in-header: header.tex 
     include-before-body: Portada.qmd
     header-includes:
       - \usepackage{indentfirst}
@@ -167,20 +166,15 @@ Para crear un modelo probabilístico de manera exitosa a partir de la teoría Ha
 
 # Bibliografía
 
-All Science. (2024). *Crazy orange cats*. https://allscience.substack.com/p/crazy-orange-cats  
+\hangindent=1.27cm
+\hangafter=1
 
-LibreTexts. (2024). *Hardy–Weinberg principle of equilibrium*. https://bio.libretexts.org/
+All Science. (2024). *Crazy orange cats*. \url{https://allscience.substack.com/p/crazy-orange-cats}
 
-::: pagebreak
-:::
+\hangindent=1.27cm
+\hangafter=1
 
-# Anexos
-
-# Bibliografía
-
-All Science. (2024). *Crazy orange cats*. https://allscience.substack.com/p/crazy-orange-cats  
-
-LibreTexts. (2024). *Hardy–Weinberg principle of equilibrium*. https://bio.libretexts.org/
+LibreTexts. (2024). *Hardy–Weinberg principle of equilibrium*. \url{https://bio.libretexts.org/}
 
 ::: pagebreak
 :::

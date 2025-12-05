@@ -1,0 +1,18 @@
+\begin{titlepage}
+\centering
+\vspace*{4cm}
+
+{\Large \textbf{Modelo probabilístico de herencia de color naranja en gatos} \par}
+
+\vspace{1.5cm}
+{\large Liz de María Salazar Amaya \par}
+
+\vspace{1cm}
+{\large Universidad de Costa Rica \par}
+{\large CA0204 – Herramientas para Ciencia de Datos I \par}
+{\large Profesor: Luis Juárez Potoy \par}
+
+\vfill
+{\large 2 de diciembre del 2025 \par}
+
+\end{titlepage}
